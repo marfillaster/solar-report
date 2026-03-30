@@ -553,10 +553,10 @@ def build_full_report_page(markdown: str) -> str:
           <h2>Read this before the full report</h2>
         </div>
         <p>
-          This page renders the exact report markdown as HTML. The report is
-          AI-assisted. While the underlying data comes from the inverter export,
-          the narrative analysis, recommendations, projections, and financial
-          interpretation may contain inaccuracies or misinterpretations.
+          The report is AI-assisted. While the underlying data comes from the
+          inverter export, the narrative analysis, recommendations, projections,
+          and financial interpretation may contain inaccuracies or
+          misinterpretations.
         </p>
         <p>
           Verify critical findings, especially financial and equipment-related
