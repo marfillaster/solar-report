@@ -243,8 +243,18 @@ body {
 
 .notice-card {
   background:
-    linear-gradient(135deg, rgba(120, 167, 172, 0.16), rgba(255, 250, 242, 0.94) 42%),
+    linear-gradient(135deg, rgba(219, 108, 43, 0.18), rgba(255, 250, 242, 0.96) 40%),
     var(--card);
+  border: 1px solid rgba(219, 108, 43, 0.28);
+  box-shadow: 0 18px 44px rgba(112, 71, 38, 0.14);
+}
+
+.notice-card h2 {
+  color: var(--sun-deep);
+}
+
+.notice-card__actions {
+  margin: 18px 0 0;
 }
 
 .table-scroll {
