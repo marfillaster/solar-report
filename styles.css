@@ -47,6 +47,10 @@ body {
   border-bottom: 1px solid rgba(29, 42, 47, 0.08);
 }
 
+.hero--compact {
+  padding: 68px 0 30px;
+}
+
 .hero__glow {
   position: absolute;
   border-radius: 999px;
@@ -116,6 +120,30 @@ body {
   box-shadow: 0 10px 24px rgba(60, 64, 54, 0.08);
   font-family: "Trebuchet MS", Verdana, sans-serif;
   font-size: 0.94rem;
+}
+
+.hero__actions {
+  margin: 22px 0 0;
+}
+
+.button {
+  display: inline-block;
+  padding: 12px 18px;
+  border-radius: 999px;
+  background: var(--sea);
+  color: #fffaf2;
+  text-decoration: none;
+  font-family: "Trebuchet MS", Verdana, sans-serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.03em;
+  box-shadow: 0 10px 24px rgba(47, 96, 102, 0.2);
+}
+
+.button--secondary {
+  background: rgba(255, 250, 242, 0.82);
+  color: var(--sea);
+  border: 1px solid rgba(29, 42, 47, 0.12);
+  box-shadow: 0 10px 24px rgba(60, 64, 54, 0.08);
 }
 
 .card {
@@ -240,6 +268,24 @@ th {
 
 td {
   font-size: 0.98rem;
+}
+
+.report h2 {
+  margin-top: 0;
+  font-size: clamp(1.55rem, 2.5vw, 2.2rem);
+}
+
+.report h3 {
+  margin-top: 24px;
+  margin-bottom: 10px;
+  font-size: 1.18rem;
+  color: var(--sea);
+}
+
+.report h2 + p,
+.report h2 + ul,
+.report h2 + table {
+  margin-top: 0;
 }
 
 @media (max-width: 920px) {

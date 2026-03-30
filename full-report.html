@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Full Solar Report | January-March 2026</title>
+    <meta
+      name="description"
+      content="Full residential solar performance report covering January to March 2026."
+    />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="hero hero--compact">
+      <div class="hero__glow hero__glow--sun"></div>
+      <div class="hero__glow hero__glow--sky"></div>
+      <div class="wrap">
+        <p class="eyebrow">Full Report</p>
+        <h1>January to March 2026 solar analysis</h1>
+        <p class="lede">
+          Full narrative report for a 6.5 kWp solar plus battery system in
+          Cavite, Philippines.
+        </p>
+        <p class="hero__actions">
+          <a class="button button--secondary" href="./index.html">Back to summary</a>
+        </p>
+      </div>
+    </header>
+
+    <main class="wrap stack">
+      <article class="card report">
+        <h2>Executive Summary</h2>
+        <p>
+          Your 6.5 kWp system is performing well and on track for a
+          <strong>~3.8-year payback</strong> on PHP 400,000 invested.
+          Self-sufficiency has improved consistently from 60% in January to 77%
+          in March as the dry season strengthens, a 17-point gain in just two
+          months. The most impactful single optimization is <strong>shifting EV
+          charging to 10:00-13:00</strong>, which could cut EV-day grid import by
+          about 3-5 kWh per session and save roughly PHP 3,200-5,300 annually.
+          An unusual 8.2 kW grid draw on the night of January 16 warrants
+          investigation but likely reflects a large-appliance event. Two
+          generation dips on February 8 and March 17 appear weather-related. The
+          system avoids about <strong>4.5 tonnes of CO2 annually</strong>.
+        </p>
+
+        <h2>System Profile</h2>
+        <ul>
+          <li><strong>PV capacity:</strong> 6.5 kWp, inverter 8 kW AC</li>
+          <li><strong>Battery:</strong> 14.3 kWh nominal, about 14.3 kWh usable</li>
+          <li><strong>EV/PHEV:</strong> Present, detected on 19 of 89 days</li>
+          <li><strong>Tariff:</strong> Flat PHP 14/kWh import, PHP 7/kWh feed-in</li>
+          <li><strong>Location:</strong> Cavite, Philippines</li>
+        </ul>
+
+        <h2>Alerts</h2>
+        <h3>Load Anomalies</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Daily Load</th>
+              <th>Expected</th>
+              <th>Deviation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan 7</td><td>36.0 kWh</td><td>~24.2 +/- 5.3 kWh</td><td>+2.2σ</td></tr>
+            <tr><td>Jan 16</td><td>35.1 kWh</td><td>~24.2 +/- 5.3 kWh</td><td>+2.1σ</td></tr>
+            <tr><td>Mar 1</td><td>35.2 kWh</td><td>~24.2 +/- 5.3 kWh</td><td>+2.1σ</td></tr>
+            <tr><td>Mar 13</td><td>36.1 kWh</td><td>~24.2 +/- 5.3 kWh</td><td>+2.2σ</td></tr>
+          </tbody>
+        </table>
+        <p>
+          January 16 is the most notable case because it also produced the
+          highest grid draw on record, <strong>8.2 kW at 22:00</strong>, on a
+          night with no detected EV charging. If the household does not
+          routinely run heavy loads after 22:00, it is worth monitoring the
+          relevant circuit or appliance group.
+        </p>
+
+        <h3>PV Generation</h3>
+        <table>
+          <thead>
+            <tr>
+              <th>Date</th>
+              <th>Daily PV</th>
+              <th>Expected</th>
+              <th>Deviation</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Feb 8</td><td>10.9 kWh</td><td>~19.4 kWh</td><td>-44%</td></tr>
+            <tr><td>Mar 17</td><td>15.8 kWh</td><td>~28.3 kWh</td><td>-44%</td></tr>
+          </tbody>
+        </table>
+        <p>
+          These appear weather-related unless either date was a clear-sky day in
+          your recollection.
+        </p>
+
+        <h2>Recommendations</h2>
+        <h3>1. Shift EV charging to 10:00-13:00</h3>
+        <p>
+          On the 19 detected EV charging days, grid import averaged
+          <strong>17.5 kWh</strong>, nearly triple the <strong>5.9 kWh</strong>
+          seen on non-EV days. Front-loading charging into the late-morning
+          solar window could shift about 3-5 kWh of grid import to solar per
+          session. Estimated annual impact: <strong>PHP 3,200-5,300</strong>.
+        </p>
+
+        <h3>2. Identify and reduce the late-night base load</h3>
+        <p>
+          Non-EV overnight demand stays around 600-800 W and drains the battery
+          from about 67% SOC at dusk to about 24% by morning. A 100 W reduction
+          in overnight base load saves about 0.7 kWh per day, or roughly
+          <strong>PHP 3,600 per year</strong>.
+        </p>
+
+        <h3>3. Confirm battery SOC floor and backup reserve setting</h3>
+        <p>
+          The battery currently reaches an average morning minimum of about 21%
+          SOC. Verify that the backup reserve is set high enough for your outage
+          preferences.
+        </p>
+
+        <h2>Bill Impact</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Month</th>
+              <th>Without Solar</th>
+              <th>With Solar</th>
+              <th>Feed-in Credit</th>
+              <th>Net Savings</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Jan 2026</td><td>PHP 11,628</td><td>PHP 4,654</td><td>PHP 76</td><td>PHP 7,051</td></tr>
+            <tr><td>Feb 2026</td><td>PHP 10,763</td><td>PHP 2,912</td><td>PHP 624</td><td>PHP 8,474</td></tr>
+            <tr><td>Mar 2026</td><td>PHP 12,341</td><td>PHP 2,899</td><td>PHP 874</td><td>PHP 10,317</td></tr>
+          </tbody>
+        </table>
+        <ul>
+          <li><strong>Estimated annual bill without solar:</strong> PHP 142,440</li>
+          <li><strong>Estimated annual bill with solar:</strong> PHP 42,918</li>
+          <li><strong>Annual bill reduction:</strong> PHP 105,981 (74%)</li>
+        </ul>
+
+        <h2>ROI Estimate</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>With Battery</th>
+              <th>Without Battery</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>System cost</td><td>PHP 400,000</td><td>PHP 300,000</td></tr>
+            <tr><td>Annual savings (year 1)</td><td>PHP 105,981</td><td>~PHP 81,240</td></tr>
+            <tr><td>Simple payback</td><td>~3.8 years</td><td>~3.7 years</td></tr>
+            <tr><td>25-year lifetime savings</td><td>PHP 2,496,483</td><td>~PHP 1,804,000</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Key Metrics</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Non-EV Days</th>
+              <th>EV Days</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Daily PV generation</td><td>~22 kWh</td><td>~24 kWh</td></tr>
+            <tr><td>Daily consumption</td><td>~24.2 kWh</td><td>~41.6 kWh</td></tr>
+            <tr><td>Daily grid import</td><td>~5.9 kWh</td><td>~17.5 kWh</td></tr>
+            <tr><td>Daily grid export</td><td>~2.8 kWh</td><td>~1.5 kWh</td></tr>
+            <tr><td>Evening SOC (18-20h)</td><td>~67%</td><td>~27%</td></tr>
+          </tbody>
+        </table>
+
+        <h2>System Size Assessment</h2>
+        <p>
+          The system is well designed for the household's non-EV needs. Battery
+          size is appropriate, and PV-to-load matching is good. The oversized
+          inverter is a minor efficiency and capital-cost issue, but it does not
+          hurt current operation. On EV days, the main constraint is timing
+          rather than installed capacity.
+        </p>
+
+        <h2>Battery Health</h2>
+        <ul>
+          <li><strong>Nominal capacity:</strong> 14.3 kWh</li>
+          <li><strong>Estimated usable:</strong> about 14.3 kWh</li>
+          <li><strong>Round-trip efficiency:</strong> 96.7% (Jan), 96.3% (Feb), 94.5% (Mar)</li>
+          <li><strong>Daily equivalent full cycles:</strong> about 0.64</li>
+          <li><strong>Estimated remaining cycle-life runway:</strong> about 25 years</li>
+        </ul>
+
+        <h2>Month-over-Month Trends</h2>
+        <table>
+          <thead>
+            <tr>
+              <th>Metric</th>
+              <th>Jan 2026</th>
+              <th>Feb 2026</th>
+              <th>Mar 2026</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Avg daily PV</td><td>16.7 kWh</td><td>23.6 kWh</td><td>27.2 kWh</td></tr>
+            <tr><td>Avg daily load</td><td>26.8 kWh</td><td>27.5 kWh</td><td>29.4 kWh</td></tr>
+            <tr><td>Self-sufficiency</td><td>60.0%</td><td>72.9%</td><td>76.5%</td></tr>
+            <tr><td>Grid dependence</td><td>40.0%</td><td>27.0%</td><td>23.0%</td></tr>
+            <tr><td>Battery efficiency</td><td>96.7%</td><td>96.3%</td><td>94.5%</td></tr>
+          </tbody>
+        </table>
+
+        <h2>Annual Projection</h2>
+        <ul>
+          <li><strong>Projected annual generation:</strong> about 7,681 kWh in year 1</li>
+          <li><strong>Projected annual self-consumed energy:</strong> about 6,675 kWh</li>
+          <li><strong>Projected annual export:</strong> about 1,006 kWh</li>
+          <li><strong>Confidence:</strong> moderate, based on three dry-season months</li>
+        </ul>
+
+        <h2>Appendix</h2>
+        <p>
+          Best day: <strong>2026-03-19</strong> with 30.0 kWh PV and 95%
+          self-sufficiency. Worst day: <strong>2026-01-02</strong> with 4.7 kWh
+          PV and 20% self-sufficiency.
+        </p>
+        <p>
+          Suggested next steps: investigate the January 16 late-night spike,
+          configure EV charging to finish by early afternoon, and re-run the
+          analysis after wet-season data is available.
+        </p>
+      </article>
+    </main>
+  </body>
+</html>
