@@ -13,6 +13,7 @@ DEFAULT_SOURCE = Path("/Users/ken/solar-skills/data/solar-analysis.md")
 REPO_ROOT = Path(__file__).resolve().parents[4]
 INDEX_PATH = REPO_ROOT / "index.html"
 FULL_REPORT_PATH = REPO_ROOT / "full-report.html"
+RAW_REPORT_PATH = REPO_ROOT / "solar-analysis.md"
 
 REQUIRED_SECTIONS = [
     "Executive Summary",
@@ -540,6 +541,7 @@ def build_full_report_page(markdown: str) -> str:
         </p>
         <p class="hero__actions">
           <a class="button button--secondary" href="./index.html">Back to summary</a>
+          <a class="button button--secondary" href="./solar-analysis.md">View source markdown</a>
         </p>
       </div>
     </header>
@@ -574,6 +576,7 @@ def build_site(source: Path, repo_root: Path) -> None:
 
     write_text(repo_root / "index.html", summary_page)
     write_text(repo_root / "full-report.html", full_report_page)
+    write_text(repo_root / "solar-analysis.md", markdown)
 
 
 def parse_args() -> argparse.Namespace:
@@ -596,6 +599,7 @@ def main() -> None:
     build_site(source, repo_root)
     print(f"Updated {repo_root / 'index.html'}")
     print(f"Updated {repo_root / 'full-report.html'}")
+    print(f"Updated {repo_root / 'solar-analysis.md'}")
     print(f"Source report: {source}")
 
 
