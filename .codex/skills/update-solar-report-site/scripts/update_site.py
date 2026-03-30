@@ -536,8 +536,8 @@ def build_full_report_page(markdown: str) -> str:
         <p class="eyebrow">Full Report</p>
         <h1>January to March 2026 solar analysis</h1>
         <p class="lede">
-          Full narrative report for a residential solar plus battery system in
-          Cavite, Philippines.
+          Rendered HTML version of the full report markdown for a residential
+          solar plus battery system in Cavite, Philippines.
         </p>
         <p class="hero__actions">
           <a class="button button--secondary" href="./index.html">Back to summary</a>
@@ -547,6 +547,27 @@ def build_full_report_page(markdown: str) -> str:
     </header>
 
     <main class="wrap stack">
+      <section class="card notice-card">
+        <div class="section-heading">
+          <p class="section-label">Before You Read</p>
+          <h2>This page renders the exact report markdown as HTML.</h2>
+        </div>
+        <p>
+          This report is AI-assisted. While the underlying data comes from the
+          inverter export, the narrative analysis, recommendations, projections,
+          and financial interpretation may contain inaccuracies or
+          misinterpretations.
+        </p>
+        <p>
+          Verify critical findings, especially financial and equipment-related
+          decisions, against your own records, manufacturer specifications, or a
+          qualified solar professional before acting on them.
+        </p>
+        <p>
+          Source workflow:
+          <a href="https://github.com/marfillaster/solar-skills">solar-skills</a>
+        </p>
+      </section>
       <article class="card report">
         {article}
       </article>
