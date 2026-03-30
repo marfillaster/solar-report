@@ -6,6 +6,22 @@ Public GitHub Pages site for a residential solar performance summary covering Ja
 
 - `index.html` - the shareable report page
 - `styles.css` - the site styling
+- `.codex/skills/update-solar-report-site/` - deterministic Codex skill for regenerating the site from `solar-analysis.md`
+
+## Install For Codex
+
+To make the repo skill available to Codex globally:
+
+```bash
+ln -s /Users/ken/solar-report/.codex/skills/update-solar-report-site \
+  /Users/ken/.codex/skills/update-solar-report-site
+```
+
+Then invoke it in Codex with:
+
+```text
+Use $update-solar-report-site to refresh the public solar report site from the latest solar-analysis.md.
+```
 
 ## Publish On GitHub Pages
 

@@ -7,6 +7,21 @@ description: Regenerate the solar-report GitHub Pages site from /Users/ken/solar
 
 Regenerate the public site with the bundled script instead of hand-editing the generated pages.
 
+## Install For Codex
+
+If this repo-local skill is not already linked into your global Codex skills directory, install it with:
+
+```bash
+ln -s /Users/ken/solar-report/.codex/skills/update-solar-report-site \
+  /Users/ken/.codex/skills/update-solar-report-site
+```
+
+Then invoke it in Codex with:
+
+```text
+Use $update-solar-report-site to refresh the public solar report site from the latest solar-analysis.md.
+```
+
 ## Workflow
 
 1. Confirm the source report path.
