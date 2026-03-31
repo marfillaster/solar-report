@@ -26,6 +26,21 @@ REQUIRED_SECTIONS = [
     "Annual Projection",
 ]
 
+MONTH_NAMES = {
+    1: "January",
+    2: "February",
+    3: "March",
+    4: "April",
+    5: "May",
+    6: "June",
+    7: "July",
+    8: "August",
+    9: "September",
+    10: "October",
+    11: "November",
+    12: "December",
+}
+
 
 def normalize_text(text: str) -> str:
     replacements = {
@@ -81,6 +96,22 @@ def split_sections(markdown: str) -> dict[str, str]:
         if current is not None:
             sections[current].append(line)
     return {name: "\n".join(lines).strip() for name, lines in sections.items()}
+
+
+def parse_report_period(markdown: str) -> tuple[str, str]:
+    match = re.search(r"Based on analysis of solar data from (\d{4})-(\d{2}) to (\d{4})-(\d{2})", markdown)
+    if not match:
+        raise ValueError("Could not parse report period from source markdown")
+
+    start_year = int(match.group(1))
+    start_month = int(match.group(2))
+    end_year = int(match.group(3))
+    end_month = int(match.group(4))
+
+    return (
+        f"{MONTH_NAMES[start_month]} {start_year} to {MONTH_NAMES[end_month]} {end_year}",
+        f"{MONTH_NAMES[start_month]}-{MONTH_NAMES[end_month]} {end_year}" if start_year == end_year else f"{MONTH_NAMES[start_month]} {start_year}-{MONTH_NAMES[end_month]} {end_year}",
+    )
 
 
 def split_subsections(section_text: str) -> dict[str, str]:
@@ -166,9 +197,16 @@ def parse_environmental_impact(section_text: str) -> str:
 def parse_labeled_value(section_text: str, label: str) -> str:
     for line in section_text.splitlines():
         stripped = strip_markdown(line).lstrip("- ").strip()
-        prefix = f"{label}:"
-        if stripped.startswith(prefix):
-            return stripped[len(prefix) :].strip()
+        if ":" not in stripped:
+            continue
+        key, value = stripped.split(":", 1)
+        normalized_key = key.strip().lower()
+        normalized_label = label.lower()
+        if (
+            normalized_key == normalized_label
+            or normalized_key.endswith(f" {normalized_label}")
+        ):
+            return value.strip()
     raise ValueError(f"Could not find '{label}' in section")
 
 
@@ -177,10 +215,15 @@ def parse_payback(roi_section: str) -> str:
     if not table or len(table) < 2:
         raise ValueError("Could not parse ROI table")
     header = table[0]
-    with_battery_idx = header.index("With Battery")
+    if "With Battery" in header:
+        payback_idx = header.index("With Battery")
+    elif "Value" in header:
+        payback_idx = header.index("Value")
+    else:
+        raise ValueError("Could not find a payback value column in ROI table")
     for row in table[1:]:
         if row and strip_markdown(row[0]) == "Simple payback":
-            return strip_markdown(row[with_battery_idx])
+            return strip_markdown(row[payback_idx])
     raise ValueError("Could not find Simple payback row in ROI table")
 
 
@@ -356,7 +399,7 @@ def markdown_to_html(markdown: str) -> str:
     return "\n".join(output)
 
 
-def build_summary_page(sections: dict[str, str]) -> str:
+def build_summary_page(sections: dict[str, str], period_long: str, period_short: str) -> str:
     profile = parse_profile(sections["System Profile"])
     summary = first_paragraph(sections["Executive Summary"])
     payback = parse_payback(sections["ROI Estimate"])
@@ -388,10 +431,10 @@ def build_summary_page(sections: dict[str, str]) -> str:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar System Report | January-March 2026</title>
+    <title>Solar System Report | {period_short}</title>
     <meta
       name="description"
-      content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for January-March 2026."
+      content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for {period_long}."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -401,7 +444,7 @@ def build_summary_page(sections: dict[str, str]) -> str:
       <div class="hero__glow hero__glow--sky"></div>
       <div class="wrap">
         <p class="eyebrow">Home Solar Case Study</p>
-        <h1>Solar performance from January to March 2026</h1>
+        <h1>Solar performance from {period_long}</h1>
         <p class="lede">
           A public-facing summary of one household's solar, battery, and EV usage
           patterns based on the latest exported inverter data.
@@ -514,17 +557,17 @@ def build_summary_page(sections: dict[str, str]) -> str:
 """
 
 
-def build_full_report_page(markdown: str) -> str:
+def build_full_report_page(markdown: str, period_long: str, period_short: str) -> str:
     article = markdown_to_html(markdown)
     return f"""<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Full Solar Report | January-March 2026</title>
+    <title>Full Solar Report | {period_short}</title>
     <meta
       name="description"
-      content="Full residential solar performance report covering January to March 2026."
+      content="Full residential solar performance report covering {period_long}."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -534,7 +577,7 @@ def build_full_report_page(markdown: str) -> str:
       <div class="hero__glow hero__glow--sky"></div>
       <div class="wrap">
         <p class="eyebrow">Full Report</p>
-        <h1>January to March 2026 solar analysis</h1>
+        <h1>{period_long} solar analysis</h1>
         <p class="lede">
           Rendered HTML version of the full report markdown for a residential
           solar plus battery system in Cavite, Philippines.
@@ -590,9 +633,10 @@ def build_site(source: Path, repo_root: Path) -> None:
     markdown = source.read_text(encoding="utf-8")
     sections = split_sections(markdown)
     ensure_sections(sections)
+    period_long, period_short = parse_report_period(markdown)
 
-    summary_page = build_summary_page(sections)
-    full_report_page = build_full_report_page(markdown)
+    summary_page = build_summary_page(sections, period_long, period_short)
+    full_report_page = build_full_report_page(markdown, period_long, period_short)
 
     write_text(repo_root / "index.html", summary_page)
     write_text(repo_root / "full-report.html", full_report_page)

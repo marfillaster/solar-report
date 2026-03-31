@@ -1,81 +1,81 @@
 # Solar System Recommendations
 
-Based on analysis of solar data from January–March 2026 (89 days, 2,133 hourly rows).
-
----
+Based on analysis of solar data from 2025-12 to 2026-03 (120 days).
 
 ## Executive Summary
 
-Your 6.5 kWp system is performing well and on track for a **~3.8-year payback** on ₱400,000 invested. Self-sufficiency has improved consistently from 60% in January to 77% in March as the dry season strengthens — a 17-point gain in just two months. The most impactful single optimization is **shifting EV charging to 10:00–13:00**, which could cut EV-day grid import by ~3–5 kWh per session and save ₱3,200–5,300 annually. An unusual 8.2 kW grid draw on the night of Jan 16 warrants investigation but likely reflects a benign large-appliance event. Two generation dips (Feb 8 and Mar 17, both −44%) appear weather-related with no equipment fault signal. The system avoids ~4.5 tonnes of CO₂ annually — equivalent to planting ~206 trees.
+Your 6.5 kWp system is performing well and the main story is seasonal improvement: self-sufficiency rose from 54.3% in December 2025 to 76.5% in March 2026 as solar production climbed from ~16.5 to ~27.2 kWh/day. Across the four months, the system cut estimated grid spend by about 69% and is tracking toward a simple payback of ~4.0 years on a reported ₱400,000 investment.
 
----
+The single highest-impact optimization is PHEV charging timing. On detected EV/PHEV days, average daily load jumps to ~42.5 kWh and grid import jumps to ~20.2 kWh, versus ~23.8 kWh load and ~6.3 kWh import on non-EV days. Your battery is doing useful work, but the vehicle load is still large enough to force heavy afternoon grid draw when charging extends beyond the solar peak.
+
+No inverter-capacity issue is visible. Peak PV output reached 5.4 kW, which is only 68% of your 8 kW inverter rating, so the system is not clipping. Action worth taking now: review 2026-01-02 in the inverter logs because generation was ~74% below its rolling baseline.
+
+The system is projected to avoid about 4.4 tonnes of CO2 per year, roughly equivalent to 200 trees or 20,967.0 km of driving emissions.
 
 ## System Profile
 
-- **PV capacity**: 6.5 kWp, inverter: 8 kW AC (DC/AC ratio: 0.81 — inverter is oversized for this array)
-- **Battery**: 14.3 kWh nominal, ~14.3 kWh usable (SOC range 21%–89% typical)
-- **EV/PHEV**: Present — detected on 19 of 89 days (~21% of days)
-- **Tariff**: Flat rate ₱14/kWh import, ₱7/kWh feed-in (net metering at 50%)
-- **Location**: General Trias, Cavite, Philippines
-
----
+- **Location**: Cavite, Philippines
+- **PV capacity**: 6.5 kWp, inverter: 8.0 kW AC (DC/AC ratio: 0.81)
+- **Battery**: 14.3 kWh nominal, ~14.4 kWh estimated usable in the data; treat that as effectively full nominal capacity rather than true >100% usable because the estimate is sensitive to SOC reporting
+- **EV/PHEV**: PHEV present; 30 EV-like charging days detected in 120 full days
+- **Tariff**: Flat rate at ₱14/kWh
+- **Feed-in tariff**: 50% of import rate
 
 ## Alerts
 
-### Load Anomalies
+### PV Generation Alerts
 
-Four non-EV days exceeded the expected load range by more than 2 standard deviations:
-
-| Date | Daily Load (kWh) | Expected | Deviation |
+**Action required:** On 2026-01-02, PV generation was 4.7 kWh against an expected ~17.8 kWh (74% below baseline). If this does not match known bad weather or downtime, check inverter logs for that date.
+| Date | Daily PV (kWh) | Expected (kWh) | Deviation |
 |---|---|---|---|
-| Jan 7 | 36.0 | ~24.2 ± 5.3 kWh | +2.2σ |
-| Jan 16 | 35.1 | ~24.2 ± 5.3 kWh | +2.1σ |
-| Mar 1 | 35.2 | ~24.2 ± 5.3 kWh | +2.1σ |
-| Mar 13 | 36.1 | ~24.2 ± 5.3 kWh | +2.2σ |
+| 2025-12-07 | 9.9 | ~17.5 | -43% |
+| 2025-12-08 | 9.6 | ~16.4 | -41% |
+| 2025-12-09 | 8.6 | ~15.5 | -45% |
+| 2026-02-08 | 10.9 | ~19.4 | -44% |
+| 2026-03-17 | 15.8 | ~28.3 | -44% |
+These dips are large enough to review against weather and inverter logs, but most look more like weather-driven weak-solar days than a persistent hardware issue.
 
-Jan 7 falls within the extended Philippine holiday period, which likely explains guests or heavier appliance use. Jan 16 is the most notable: it also produced the highest grid draw on record — **8.2 kW at 22:00** on a night with no detected EV charging. A draw of that size at that hour points to a large appliance activating unexpectedly (water heater with a faulty thermostat, compressor, or multiple air conditioners running simultaneously). If the household doesn't routinely run heavy loads after 22:00, it's worth monitoring that circuit.
+### Load Alerts
 
-### PV Generation
+- 2025-12-04: 35.6 kWh consumed versus a non-EV baseline of ~23.8 ± 5.4 kWh. If that day was not a missed PHEV classification, it likely reflects an unusual household load spike worth checking if it recurs.
+- 2026-03-13: 36.1 kWh consumed versus a non-EV baseline of ~23.8 ± 5.4 kWh. If that day was not a missed PHEV classification, it likely reflects an unusual household load spike worth checking if it recurs.
+- 2025-12-03: 35.0 kWh consumed versus a non-EV baseline of ~23.8 ± 5.4 kWh. If that day was not a missed PHEV classification, it likely reflects an unusual household load spike worth checking if it recurs.
+- 2026-01-07: 36.0 kWh consumed versus a non-EV baseline of ~23.8 ± 5.4 kWh. If that day was not a missed PHEV classification, it likely reflects an unusual household load spike worth checking if it recurs.
 
-Two days showed generation ~44% below their rolling baseline — likely heavy cloud cover:
+### Battery Alerts
 
-| Date | Daily PV (kWh) | Expected | Deviation |
-|---|---|---|---|
-| Feb 8 | 10.9 | ~19.4 kWh | −44% |
-| Mar 17 | 15.8 | ~28.3 kWh | −44% |
-
-No action required unless either date was a clear-weather day in your recollection, in which case retrieve inverter fault logs. Mar 17 also shows a battery efficiency reading of 79% (vs. the 94–97% norm) — this is almost certainly a measurement artifact from the partial-generation day rather than a battery issue.
-
----
+- 2026-03-17: round-trip efficiency was 78.7% on 8.6 kWh charged and 6.8 kWh discharged. Treat this as a monitor-for-recurrence item rather than a fault on its own unless it repeats.
 
 ## Recommendations
 
-### 1. Shift EV charging to 10:00–13:00 (highest impact)
+### 1. Shift PHEV charging into the late-morning solar window
 
-On the 19 detected EV charging days, grid import averaged 17.5 kWh — nearly triple the 5.9 kWh on non-EV days. The bulk of that deficit occurs in the afternoon: at 15:00 on EV days, average load surges to 4,695W while PV has already begun its decline to ~1,679W; at 16:00 it's a 3,808W load against only 834W of PV, forcing 1,847W of grid draw; by 18:00 the grid is pulling 2,293W. The battery is depleted to just 27% SOC by evening on EV days, compared to 67% on non-EV days — there is nothing left to cover the overnight household load, which then comes entirely from the grid.
+What is happening now: your solar output is strongest from 09:00 to 14:00, with the average peak around 12:00. On EV/PHEV days, the charging signature extends from 09:00 through 20:00, and the heaviest average EV-day load appears at 15:00 when household demand reaches ~4.3 kW. That timing forces the battery to discharge hard and still leaves the grid supplying about 0.8 kWh in that hour on average. The single highest grid-draw hour in the whole dataset was 8.7 kW on 2025-12-02 at 16:00, and it was an EV day.
 
-The system handles the morning portion of EV charging well. Between 09:00 and 12:00, PV is generating 2,300–4,200W and the battery is being charged simultaneously. Front-loading charging into this window — targeting charge completion by 13:00–14:00 rather than allowing it to run through the afternoon — shifts 3–5 kWh of grid import to solar per session. At ₱14 avoided import versus ₱7 that would otherwise be earned from export, that's a net gain of ₱7/kWh on the shifted energy, or ₱21–35 per session and ₱1,600–2,700/year from the rate differential alone. Adding the absolute avoided import savings, the total annual impact is ₱3,200–5,300.
+Why it is suboptimal: the house-only baseline is already fairly well matched to the PV system. The data gap shows up when vehicle charging continues after the PV peak begins to fade. Non-EV days average ~6.3 kWh of import, while EV days average ~20.2 kWh. That means the car is the dominant driver of grid dependence, not a general undersizing problem in the house system.
 
-If your EVSE supports scheduled charging, set a departure time or end-of-charge time of 13:00–14:00. If it uses a simple timer, set charging to start no later than 09:00 and stop by 13:30.
+What to change: if your PHEV or charger has scheduling, concentrate charging into roughly 10:00 to 15:00 on sunny days and avoid starting a large session after 15:00 unless you specifically need the range. Even partial improvement matters. The battery analysis suggests about ~1.9 kWh/day of avoidable import across the dataset as an upper-bound flexible-load opportunity, worth roughly ₱9,709 per year. Because much of that flexibility is likely tied to the vehicle, the real value of a better charging schedule could be a meaningful chunk of that figure while also reducing high afternoon peak draw.
 
-### 2. Identify and reduce the late-night base load
+### 2. Preserve battery energy for the evening instead of letting flexible daytime loads spill into late afternoon
 
-On non-EV nights, average load runs from 776W at midnight down to 612W at 04:00 before ticking back up as the household wakes. This overnight draw — approximately 14 kWh from midnight to 07:00 — is met by battery discharge and grid import, and drains the battery from ~67% SOC at dusk to ~24% by morning. A sustained overnight consumption of 600–800W suggests the household has significant standby or continuous loads: always-on air conditioning, a spare refrigerator, continuous water pump, or entertainment systems left in standby.
+What is happening now: on non-EV days, evening SOC averages about 63% and falls to about 23% by 05:00 to 06:00, so the battery is carrying a healthy overnight role. On EV days, evening SOC is only about 27%, which means the battery has already been pulled down heavily before the night period starts.
 
-A 100W reduction in overnight base load saves ~0.7 kWh/day, or ₱3,600/year, and leaves the battery better-charged for the next morning's solar ramp-up. Use a smart plug with energy monitoring on candidate appliances for a week to identify the culprits. The Jan 16 event (8.2 kW at 22:00) is the most useful starting point — checking what triggered that spike may reveal an appliance that cycles intermittently at high power overnight.
+Why it matters: once the battery reaches the evening at a low SOC, the night and early-morning load has no buffer left and the home falls back to grid import. This is why EV days look much worse than non-EV days even though EV-day solar production is actually a bit higher (~22.2 versus ~20.4 kWh/day).
 
-### 3. Confirm battery SOC floor and backup reserve setting
+What to change: if you can choose when flexible loads run, keep the noon export window for the PHEV first, then avoid stacking other large discretionary loads into 15:00 to 20:00. Laundry, water heating, and similar timer-friendly loads are better earlier in the solar window. The goal is not just to consume solar, but to arrive at sunset with more battery remaining.
 
-The battery currently reaches an average morning minimum of 21% SOC. LFP chemistry handles this depth well, but if your inverter has a configurable backup reserve (for grid-outage scenarios), verify it is set to at least 20%. At 21% average morning SOC, the system is running very close to the floor. If the floor is set lower than 20%, the battery may be providing slightly less protection during outages than expected. This is a settings check, not a hardware issue — check the inverter's battery management settings and confirm the reserve aligns with your outage backup needs.
+### 3. Do not spend money on more inverter or another battery before you optimize charging behavior
 
----
+What the data says: there is no inverter bottleneck. Peak PV only reached 84% of panel nameplate and 68% of inverter capacity, with zero clipping hours detected. The battery is also not obviously too small for the house-only baseline: non-EV days average ~58% cycle depth and the system reaches ~73% to 76% self-sufficiency in February and March.
+
+Why this matters: hardware upgrades should solve an actual constraint. Right now the data points to timing mismatch from PHEV charging, not inverter saturation. A second battery would also be a weak first move because projected annual export is only ~767 kWh, or about ~2.1 kWh/day on average. There is not a huge pool of unused midday surplus waiting to be captured.
+
+How to act on it: keep the present hardware, improve charging schedule first, then reassess after another few months. If you later see persistent midday export rising well above current levels, that would be the right moment to revisit storage expansion.
 
 ### Not Recommended
 
-- **Grid-charging the battery off-peak**: The flat ₱14/kWh tariff means there is no off-peak rate to arbitrage. Grid-charged energy costs ₱14.40–14.90/kWh delivered (after round-trip losses), more expensive than simply importing when needed. Not viable without a TOU tariff with a significant off-peak discount.
-- **Adding more panels**: No additional roof space is available, and the existing array is already well-matched to base-load consumption (PV/load ratio 0.91). More panels would only increase export earning ₱7/kWh — a lower return than the existing system's direct self-consumption savings.
-
----
+- **Replacing the inverter for more headroom**: current data shows no clipping, so a larger inverter would not unlock meaningful extra generation.
+- **Adding a second battery right now**: export volumes are modest and the present battery is already close to covering the house-only overnight profile; the bigger problem is when the PHEV load arrives relative to solar production.
 
 ## Bill Impact
 
@@ -83,181 +83,143 @@ The battery currently reaches an average morning minimum of 21% SOC. LFP chemist
 
 | Month | Without Solar | With Solar | Feed-in Credit | Net Savings |
 |---|---|---|---|---|
-| Jan 2026 | ₱11,628 | ₱4,654 | ₱76 | ₱7,051 |
-| Feb 2026 | ₱10,763 | ₱2,912 | ₱624 | ₱8,474 |
-| Mar 2026 | ₱12,341 | ₱2,899 | ₱874 | ₱10,317 |
+| 2025-12 | ₱13,042 | ₱5,959 | ₱0 | ₱7,084 |
+| 2026-01 | ₱11,628 | ₱4,654 | ₱76 | ₱7,051 |
+| 2026-02 | ₱10,763 | ₱2,912 | ₱624 | ₱8,474 |
+| 2026-03 | ₱12,341 | ₱2,899 | ₱874 | ₱10,317 |
 
-- Estimated annual bill without solar: **₱142,440**
-- Estimated annual bill with solar: **₱42,918** (including ~₱6,455 feed-in credits)
-- **Annual bill reduction: ₱105,981 (74%)**
-
-January's lower savings reflect weaker generation that month (16.7 kWh/day vs. 27.2 kWh/day in March). Feed-in credit was minimal in January because the battery was rarely full enough to export — the February and March improvements show the compounding effect of stronger sun filling the battery earlier, creating a longer daily export window.
-
----
+- Estimated annual bill without solar: ₱145,313
+- Estimated annual bill with solar: ₱49,956
+- Estimated annual feed-in credit: ₱4,788
+- **Estimated annual bill reduction: ₱100,150 (69%)**
 
 ## ROI Estimate
 
-| Metric | With Battery | Without Battery |
-|---|---|---|
-| System cost | ₱400,000 | ₱300,000 |
-| Annual savings (year 1) | ₱105,981 | ~₱81,240 |
-| **Simple payback** | **~3.8 years** | **~3.7 years** |
-| Remaining payback | ~3.5 years | ~3.4 years |
-| 25-year lifetime savings | ₱2,496,483 | ~₱1,804,000 |
+| Metric | Value |
+|---|---|
+| System cost | ₱400,000 |
+| Estimated annual savings (year 1) | ₱100,150 |
+| **Simple payback** | **4.0 years** |
+| Remaining payback | 3.7 years |
+| 25-year lifetime savings | ₱2,359,129 |
 
-**Battery incremental ROI**: The ₱100,000 battery adds ~₱24,741/year by shifting energy that would otherwise be exported at ₱7/kWh into evening self-consumption worth ₱14/kWh. Battery-only payback is ~4.0 years — well within the battery's projected service life. At 234 cycles/year against a 6,000-cycle LFP rating, the battery is estimated to last ~25 years, meaning it will pay back its cost roughly six times over. The battery investment is justified.
-
-Interestingly, the payback periods with and without battery are nearly identical (3.8 vs. 3.7 years) because the battery cost is almost exactly offset by its annual savings contribution. The difference in 25-year lifetime savings — ₱692,000 — represents the battery's compounding value over the system's life.
-
-The projected annual savings (₱105,981) are based on 3 months of dry-season data. Wet-season months (June–October) will reduce generation by ~14%, bringing annualized savings somewhat lower. Re-running this analysis in July 2026 will provide a more calibrated figure.
-
----
+Your reported cost already includes the battery and may include financing effects if applicable. At the current savings rate, the project is on track for a payback of about four years, which is strong relative to typical panel life. Even with degradation applied, the long-run economics remain favorable.
 
 ## Key Metrics
 
 | Metric | Non-EV Days | EV Days |
 |---|---|---|
-| Daily PV generation | ~22 kWh | ~24 kWh |
-| Daily consumption | ~24.2 kWh | ~41.6 kWh |
-| Daily grid import | ~5.9 kWh | ~17.5 kWh |
-| Daily grid export | ~2.8 kWh | ~1.5 kWh |
-| Evening SOC (18–20h) | ~67% | ~27% |
+| Daily PV generation | ~20.4 kWh | ~22.2 kWh |
+| Daily consumption | ~23.8 kWh | ~42.5 kWh |
+| Daily grid import | ~6.3 kWh | ~20.2 kWh |
+| Daily grid export | ~2.2 kWh | ~1.0 kWh |
+| Evening SOC | ~60% | ~25% |
 
-- **Self-consumption rate**: 96.3% (Jan) → 84.9% (Feb) → 82.6% (Mar) — declining as stronger sun fills the battery earlier in the day, creating an unavoidable export surplus
-- **Self-sufficiency**: 60.0% (Jan) → 72.9% (Feb) → 76.5% (Mar) — improving consistently with the season
-- Export is concentrated at 12:00–15:00, when the battery reaches ~87% SOC and PV still generates 1,400–3,600W of surplus
-- On non-EV days, the battery drains from ~67% to ~24% SOC overnight (~43pp, ~6 kWh) — a clean, sustainable daily cycle
-- On EV days, the battery depletes to ~27% SOC by evening, and the 14:00–19:00 charging surge draws 1,400–2,300W from the grid
-- Non-EV base load of ~24.2 kWh/day closely matches daily PV output (~22 kWh) — the system is well-sized for the household's baseline needs
+- Overall self-consumption rate across the four months was 89.4%.
+- Monthly self-sufficiency improved from 54.3% in December to 76.5% in March as solar production increased and grid dependence fell.
+- Export is concentrated in the 12:00 to 15:00 window, typically after the battery has already climbed well above midday SOC levels.
+- On non-EV days, the battery usually carries the home from about ~63% evening SOC down to ~23% by dawn, which is a healthy overnight role.
+- On EV days, the battery reaches evening with much less stored energy, so the car effectively displaces the battery’s usual overnight support.
 
 ### Hourly Patterns
 
-- **PV peak window**: 11:00–13:00, averaging 3,400–3,600W on non-EV days and up to 4,200W on EV days (brighter-sky sample bias)
-- **Battery charge ramp**: Begins at 07:00, peaks around 10:00 at ~1,850W charge rate, tapers after 12:00 as SOC exceeds 80%
-- **Export window**: 12:00–15:00 on non-EV days — battery is full, PV surplus spills to grid at an average of 1,038W at 13:00
-- **Evening discharge**: Battery supplies 1,000–1,060W from 17:00–19:00, smoothly bridging the solar-to-grid transition
-- **EV load spike**: Detected between 10:00 and 18:00 on EV days, peaking at 4,695W at 15:00 — a clear afternoon charging signature that competes with declining PV
-- **Overnight grid import**: Averages 0.40–0.45 kWh/hour from midnight to 06:00 as battery drops below 40% SOC
+- PV is strongest from 09:00 to 14:00, with the average peak at 12:00 on both EV and non-EV days.
+- Non-EV demand peaks around 15:00 at about ~1.4 kW, which is manageable within the solar-plus-battery profile.
+- EV-day demand also peaks around 15:00, but at about ~4.3 kW, turning the afternoon into the main stress period.
+- Export hours are mostly 12:00 to 15:00, which is the clearest opportunity window for scheduled charging or timed appliances.
+- EV charging signatures appear from 09:00 through 20:00, so not all vehicle demand is currently being captured inside the best solar window.
+- Overnight import still exists even on non-EV days, but it is moderate compared with EV days and consistent with a battery that is helping rather than sitting idle.
 
 ### Weekday vs Weekend
 
-Weekday and weekend self-sufficiency are nearly identical (75% vs. 77%), with daily loads of 24.1 and 24.3 kWh respectively. The pattern difference is in timing: weekends show ~440W higher load at 12:00–13:00 (occupants home during peak solar) — this is beneficial, as it substitutes direct solar consumption for what would otherwise be exported at ₱7/kWh. Weekday evenings at 20:00–22:00 run ~400W higher, requiring more grid import when no PV is available. If any weekday evening appliances (ironing, cooking, washing) can be shifted to 12:00–15:00 — feasible with timer-controlled appliances or a helper running chores during peak solar — they would convert ₱7/kWh export into ₱14/kWh avoided import.
+Weekday and weekend non-EV performance is similar overall: average daily load is ~23.8 kWh on weekdays and ~23.7 kWh on weekends, while self-sufficiency is 73% versus 76%. The main behavioral difference is timing rather than volume: weekends show more load around 11:00 to 12:00 and again around 20:00, which actually helps solar alignment at midday but slightly lifts evening demand.
 
 ### Peak Demand
 
-- **Peak grid draw**: 8.2 kW on 2026-01-16 at 22:00 (non-EV day) — see Alerts
-- Average daily peak grid draw: ~1.3 kW (non-EV), ~4.8 kW (EV days)
-- **Peak PV output**: 5.4 kW on 2026-03-15 at 12:00 (84% of panel nameplate, 68% of inverter capacity)
-- No demand charge tariff applies — these figures are informational
-
----
+- Peak grid draw: 8.7 kW on 2025-12-02 at 16:00 (EV day)
+- Average daily peak grid draw: ~1.4 kW on non-EV days, ~5.8 kW on EV days
+- Peak PV output: 5.4 kW on 2026-03-15 at 12:00 (68% of inverter capacity)
 
 ## System Size Assessment
 
-No additional roof space is available for expansion.
+Your array looks well-sized for the home’s non-EV baseline, but the PHEV creates demand spikes that are too large and too late in the day to be fully covered by the existing solar window.
 
-### PV Array (6.5 kWp): Correctly sized for base load
+### PV Array (6.5 kWp): correctly sized for the house, not for uncontrolled vehicle charging
 
-- Peak output of 5,436W reached 84% of the 6,500W nameplate — normal for real-world conditions with temperature, cabling, and orientation losses
-- **Inverter is oversized**: The 8 kW inverter was used to only 68% of its AC capacity at peak output. A 5.5–6 kW inverter would have been adequate for this array and more cost-effective. There is no operational impact — the inverter runs efficiently at partial load — but if it ever needs replacement, a smaller unit is the right choice
-- No panel clipping detected (peak never exceeded 85% of nameplate). No inverter clipping detected
-- Peak sun hours of 4.2 h/day in March is reasonable for Cavite in the pre-summer dry season; April and May will likely be the peak generation months
-- Non-EV PV/load ratio of 0.91: the array generates slightly less than the base household load, with the gap covered by the battery cycling energy from daytime surplus to overnight demand — an efficient arrangement
-- On EV days, average load jumps to 41.6 kWh against ~24 kWh of PV generation — the deficit is structural and cannot be solved by array sizing without exceeding available roof space
+- Peak output reached 5436 W, or 84% of panel nameplate and 68% of inverter capacity.
+- No panel clipping or inverter clipping was detected.
+- Peak sun hours improved from 2.5 in December to 4.2 in March.
+- The non-EV PV/load ratio is 0.86, which means the array is close to matching the home’s base energy needs but not oversized enough to absorb frequent vehicle charging without timing help.
 
-### Battery (14.3 kWh): Adequate for base load, stretched on EV days
+### Battery (14.3 kWh): adequate for the home, stretched on EV days
 
-- Non-EV cycle depth: ~60% (charging from ~24% to ~87% SOC), well within LFP comfort zone with headroom in both directions
-- EV days push cycle depth to ~79%, with evening SOC depleted to 27% — the battery is working hard on charging days but not in a damaging way
-- Round-trip efficiency: 96.7% (Jan) → 96.3% (Feb) → 94.5% (Mar) — all within LFP normal range (92–95% is typical; a new LFP cell often measures 95–97%)
-- The ~2.3 kWh/day estimated avoidable import represents energy the battery couldn't fully offset due to the deep overnight drain — a second battery would reduce this, but the cost would take many years to recover given the marginal nature of the gain
+- Average charge is ~9.2 kWh/day and average discharge is ~8.8 kWh/day.
+- Average cycle depth is ~61% overall, ~58% on non-EV days, and ~71% on EV days.
+- Estimated avoidable import is ~1.9 kWh/day as a dataset-wide upper bound, which supports load-shifting recommendations more than hardware expansion.
+- Monthly round-trip efficiency stayed in the 94.5% to 98.3% range, which is healthy.
 
 ### Verdict
 
-The system is well-designed for the household's non-EV needs. Battery size is appropriate, and PV-to-load matching is good. The oversized inverter is a minor inefficiency that does not affect operations. On EV days, the constraint is timing rather than capacity — shifting charging earlier is the highest-leverage action available without any hardware change.
-
----
+The system is fundamentally sound. The panels are not being limited by the inverter, the battery is active and useful, and the economics are already strong. The biggest remaining optimization is behavioral: capture more PHEV charging inside the midday solar window and avoid draining the battery before evening.
 
 ## Battery Health
 
-- **Nominal capacity**: 14.3 kWh | **Estimated usable**: ~14.3 kWh (100% of nominal — consistent with a new LFP battery)
-- **Round-trip efficiency**: 96.7% (Jan) → 96.3% (Feb) → 94.5% (Mar)
-- **Daily equivalent full cycles**: ~0.64 (234/year)
-- **Estimated cycle life remaining**: ~25 years at current usage (6,000-cycle LFP rating ÷ 234 cycles/year)
+- Nominal capacity: 14.3 kWh
+- Estimated usable capacity from the data: ~14.4 kWh (101% of nominal)
+- Round-trip efficiency: 94.5% to 98.3% across the four months
+- Daily equivalent full cycles: ~0.61
+- Estimated annual cycles: ~223
+- Estimated remaining cycle life at current usage: ~27 years
 
-At 4 months of age, the battery is performing exactly as expected: full usable capacity, high round-trip efficiency, and healthy cycle depth. The 2.2pp efficiency decline from January to March is worth tracking month-to-month — it may reflect heavier cycling as March generation increases, or it may be measurement variability. If any month drops below 90%, investigate BMS calibration or inverter firmware.
-
----
+The only caution here is interpretation: the computed usable-capacity estimate slightly exceeds nominal capacity, which usually means the metering and SOC-derived estimate is a little optimistic rather than the battery physically exceeding nameplate. In practical terms, the battery appears healthy and close to full rated performance.
 
 ## Month-over-Month Trends
 
-| Metric | Jan 2026 | Feb 2026 | Change | Mar 2026 | Change |
-|---|---|---|---|---|---|
-| Avg daily PV | 16.7 kWh | 23.6 kWh | **+41%** | 27.2 kWh | +15% |
-| Avg daily load | 26.8 kWh | 27.5 kWh | +2% | 29.4 kWh | +7% |
-| Self-sufficiency | 60.0% | 72.9% | **+13pp** | 76.5% | +4pp |
-| Grid dependence | 40.0% | 27.0% | −13pp | 23.0% | −4pp |
-| Battery efficiency | 96.7% | 96.3% | −0.4pp | 94.5% | −1.8pp |
+| Period | Avg Daily PV (from) | Avg Daily PV (to) | Avg Daily Load (from) | Avg Daily Load (to) | Self-Sufficiency (from) | Self-Sufficiency (to) |
+|---|---|---|---|---|---|---|
+| 2025-12→2026-01 | 16.5 | 16.7 | 30.1 | 26.8 | 54.3% | 60.0% |
+| 2026-01→2026-02 | 16.7 | 23.6 | 26.8 | 27.5 | 60.0% | 72.9% |
+| 2026-02→2026-03 | 23.6 | 27.2 | 27.5 | 29.4 | 72.9% | 76.5% |
 
-The dominant story is seasonal: solar generation rose 63% from January to March as the Philippine dry season intensified and the sun angle increased. Load grew more modestly (+10%), likely reflecting warmer temperatures and more air conditioning use — a trend that will probably continue into April and May. Self-sufficiency improvement is outpacing load growth, which is the ideal trajectory.
-
-January's de-seasonalized baseline (15.6 kWh/day after removing the 1.07 dry-season factor) is notably lower than February (22.0) and March (25.4), suggesting January 2026 may have had unusual cloud cover or the system was still stabilizing in its first weeks. This pulls the annual projection baseline down; if January proves to be an outlier, the real annual output will be higher than projected.
-
----
+The clearest shift is seasonal, not degradational. PV production was nearly flat from December to January, then jumped 41% from January to February and another 15% into March. Load stayed in the same general band, so self-sufficiency improved sharply as the drier/brighter months arrived. Battery efficiency drifted down slightly month to month but remained comfortably healthy.
 
 ## Annual Projection
 
-- **Data coverage**: 3 months — moderate confidence (all dry-season months; no wet-season calibration yet)
-- **De-seasonalized baseline**: 21.0 kWh/day (average of Jan 15.6, Feb 22.0, Mar 25.4 after removing 1.07 dry-season factor)
-- **Projected annual generation**: ~7,681 kWh (year 1) → ~7,305 kWh (year 10) → ~6,776 kWh (year 25)
-- **Projected annual self-consumed**: ~6,675 kWh
-- **Projected annual grid export**: ~1,006 kWh
-- **Environmental impact**: ~4.5 tonnes CO₂ avoided annually (at 0.68 kg CO₂/kWh for the Philippine grid), equivalent to ~206 trees planted or ~21,600 km of driving per year
+- Data coverage: 4 months (moderate confidence)
+- Projected annual generation: ~7242 kWh in year 1, ~6888 kWh in year 10, ~6389 kWh in year 25
+- Projected annual self-consumed energy: ~6475 kWh
+- Projected annual grid export: ~767 kWh
+- Environmental impact: ~4.4 tonnes CO2 avoided annually at 0.68 kg CO2/kWh
 
-Cavite's wet season (roughly June–October) brings consistent cloud cover and typhoon-related overcast periods that suppress generation. Projected wet-season months will average ~7% below the annual mean — about 19.5 kWh/day — compared to the ~25 kWh/day now being observed. Running this analysis after July 2026 will calibrate the wet-season adjustment and significantly improve projection confidence.
+Because the dataset spans four months, this projection has moderate confidence. It is good enough for planning, but it will become more robust once you have a full wet/dry-season cycle in the data.
 
----
+## Methodology Notes
+
+- This report uses the repository’s deterministic `analyze.py` script for all calculations and then interprets the results in narrative form.
+- EV/PHEV days are detected from unusually high daily load, so some atypical household-load days may be classified as EV-like if they resemble a charging event.
+- Avoidable import is an upper-bound indicator of flexible-load opportunity, not a guarantee that every kWh can be shifted perfectly.
+- Financial results assume a flat ₱14/kWh import tariff and feed-in credit at 50% of that rate.
+- Annual projection confidence is moderate because only four months of data are available.
 
 ## Appendix
 
 ### Best and Worst Days
 
-**Best day: 2026-03-19** — PV 30.0 kWh, Load 25.5 kWh, Grid import 1.4 kWh, Grid export 6.4 kWh. Non-EV day. Battery reached 100% SOC. A textbook clear dry-season day: generation comfortably exceeded household consumption, the battery filled by midday, and 6.4 kWh went to the grid. Self-sufficiency: **95%**.
+**Best day: 2026-03-19** — PV: 30.0 kWh, Load: 25.5 kWh, Import: 1.4 kWh, Export: 6.4 kWh, Peak SOC: 100%, Non-EV day, Self-sufficiency: 95%.
 
-**Worst day: 2026-01-02** — PV 4.7 kWh, Load 15.6 kWh, Grid import 12.5 kWh, Grid export 0 kWh. Non-EV day. Battery peaked at only 30% SOC, indicating heavy cloud from sunrise. Grid covered 80% of demand. Load was also lower than average (15.6 vs. 24.2 kWh), consistent with post-New Year reduced activity. Self-sufficiency: **20%**.
+This day combined strong solar production with moderate household demand, allowing the battery to fill and still leave a useful export surplus.
 
-### Capacity Factor
+**Worst day: 2026-01-02** — PV: 4.7 kWh, Load: 15.6 kWh, Import: 12.5 kWh, Export: 0.0 kWh, Peak SOC: 30%, Non-EV day, Self-sufficiency: 20%.
 
-| Month | Avg Daily kWh | Peak Sun Hours | Capacity Factor | Grid Dependence |
-|---|---|---|---|---|
-| Jan 2026 | 16.7 kWh | 2.6 h | 10.7% | 40.0% |
-| Feb 2026 | 23.6 kWh | 3.6 h | 15.1% | 27.0% |
-| Mar 2026 | 27.2 kWh | 4.2 h | 17.4% | 23.0% |
-
-### Next Steps
-
-- **Investigate Jan 16 night-time draw**: Use a smart plug or circuit breaker energy logger to identify what was drawing 8.2 kW at 22:00 — likely the most valuable diagnostic step from this report
-- **Configure EVSE schedule**: Set charge completion time to 13:00–14:00 and compare next month's EV-day grid import to the current 17.5 kWh baseline
-- **Re-run analysis after July 2026**: Wet-season data is needed to calibrate the annual projection and track battery efficiency trend through hotter, more humid months
-- **Check inverter backup reserve setting**: Verify the configured SOC floor aligns with your outage backup requirements, given the 21% average morning minimum
-- **Retrieve inverter logs for Feb 8 and Mar 17**: Only if those dates were clear-weather days; otherwise treat as weather events
-
-### Assumptions and Limitations
-
-- Self-consumed energy is calculated as `total_load − grid_import`, which measures actual solar offset of load and avoids inflating self-consumption figures by battery round-trip losses
-- EV charging days are detected using a threshold of 8.4 kWh above the 27.9 kWh daily average (days exceeding ~36.3 kWh total load). The four load-anomaly days (36.0, 35.1, 35.2, 36.1 kWh) sit just below this threshold and were correctly classified as non-EV high-load days
-- Annual projection uses 3 months of dry-season data (all with seasonal factor 1.07); wet-season performance has not yet been observed. The de-seasonalized baseline shows significant variance (15.6 → 22.0 → 25.4 kWh) beyond seasonal factors, possibly due to January 2026 cloud cover or early system stabilisation — this introduces additional uncertainty in the annual figure
-- Panel degradation assumed at 0.5%/year (industry standard for monocrystalline silicon)
-- Battery usable capacity estimated at 14.3 kWh (matching nominal), consistent with a new LFP system; actual BMS-reported usable capacity may differ slightly
-- Bill impact assumes consistent monthly consumption patterns; seasonal increases in air conditioning load (likely April–June) are not modelled and will increase without-solar costs, improving the system's real savings above projections
-- Feed-in tariff assumed constant at ₱7/kWh (50% of import rate); regulatory changes to net metering could affect export revenue
-
-### Disclaimer
-
-This report was generated by an AI model. While the numerical computations are performed by a deterministic script (`analyze.py`), the narrative interpretation, recommendations, and contextual inferences — seasonal adjustment factors, grid emission factors, sizing assessments, causal explanations — are AI-generated and may contain inaccuracies or misinterpretations. Verify critical findings, especially financial estimates and equipment diagnostics, against your own records, manufacturer specifications, or a qualified solar professional before making decisions based on this report.
+This was an extremely weak-solar day, so the system had very little generation to work with and grid dependence rose accordingly.
 
 ### Data Sources
 
-- `data/solar_hourly_2026-01.csv` — 31 days (Jan 1–31)
-- `data/solar_hourly_2026-02.csv` — 28 days (Feb 1–28)
-- `data/solar_hourly_2026-03.csv` — 30 days (Mar 1–30; Mar 31 excluded — no data yet)
+- `data/solar_hourly_2025-12.csv`
+- `data/solar_hourly_2026-01.csv`
+- `data/solar_hourly_2026-02.csv`
+- `data/solar_hourly_2026-03.csv`
+
+### Disclaimer
+
+This report was generated with an AI assistant using deterministic calculations from `skills/analyze/scripts/analyze.py`. The computed metrics are script-based, but the narrative interpretation and recommendations are still model-generated and should be sanity-checked against your own inverter records, utility bills, and operating experience before making spending decisions.

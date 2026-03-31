@@ -3,10 +3,10 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar System Report | January-March 2026</title>
+    <title>Solar System Report | December 2025-March 2026</title>
     <meta
       name="description"
-      content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for January-March 2026."
+      content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for December 2025 to March 2026."
     />
     <link rel="stylesheet" href="./styles.css" />
   </head>
@@ -16,15 +16,15 @@
       <div class="hero__glow hero__glow--sky"></div>
       <div class="wrap">
         <p class="eyebrow">Home Solar Case Study</p>
-        <h1>Solar performance from January to March 2026</h1>
+        <h1>Solar performance from December 2025 to March 2026</h1>
         <p class="lede">
           A public-facing summary of one household's solar, battery, and EV usage
           patterns based on the latest exported inverter data.
         </p>
         <div class="hero__meta">
           <span>6.5 kWp</span>
-          <span>14.3 kWh nominal, ~14.3 kWh usable (SOC range 21%-89% typical)</span>
-          <span>8 kW AC (DC/AC ratio: 0.81 - inverter is oversized for this array)</span>
+          <span>14.3 kWh nominal, ~14.4 kWh estimated usable in the data; treat that as effectively full nominal capacity rather than true &gt;100% usable because the estimate is sensitive to SOC reporting</span>
+          <span>8.0 kW AC (DC/AC ratio: 0.81)</span>
           <span>Cavite, Philippines</span>
         </div>
         <p class="hero__actions">
@@ -39,28 +39,28 @@
           <p class="section-label">Executive Summary</p>
           <h2>The system is already strong. The main win is charging the EV earlier.</h2>
         </div>
-        <p>Your 6.5 kWp system is performing well and on track for a <strong>~3.8-year payback</strong> on PHP 400,000 invested. Self-sufficiency has improved consistently from 60% in January to 77% in March as the dry season strengthens - a 17-point gain in just two months. The most impactful single optimization is <strong>shifting EV charging to 10:00-13:00</strong>, which could cut EV-day grid import by ~3-5 kWh per session and save PHP 3,200-5,300 annually. An unusual 8.2 kW grid draw on the night of Jan 16 warrants investigation but likely reflects a benign large-appliance event. Two generation dips (Feb 8 and Mar 17, both −44%) appear weather-related with no equipment fault signal. The system avoids ~4.5 tonnes of CO2 annually - equivalent to planting ~206 trees.</p>
+        <p>Your 6.5 kWp system is performing well and the main story is seasonal improvement: self-sufficiency rose from 54.3% in December 2025 to 76.5% in March 2026 as solar production climbed from ~16.5 to ~27.2 kWh/day. Across the four months, the system cut estimated grid spend by about 69% and is tracking toward a simple payback of ~4.0 years on a reported PHP 400,000 investment.</p>
       </section>
 
       <section class="metrics-grid">
         <article class="metric-card">
           <p class="metric-card__label">Projected Payback</p>
-          <p class="metric-card__value">~3.8 years</p>
+          <p class="metric-card__value">4.0 years</p>
           <p class="metric-card__detail">From the current ROI section</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Annual Bill Reduction</p>
-          <p class="metric-card__value">74%</p>
-          <p class="metric-card__detail">PHP 105,981</p>
+          <p class="metric-card__value">69%</p>
+          <p class="metric-card__detail">PHP 100,150</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Projected Annual Generation</p>
-          <p class="metric-card__value">~7,681 kWh (year 1)</p>
+          <p class="metric-card__value">~7242 kWh in year 1, ~6888 kWh in year 10, ~6389 kWh in year 25</p>
           <p class="metric-card__detail">Year 1 estimate from the annual projection</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Carbon Avoided</p>
-          <p class="metric-card__value">~4.5 tonnes CO2 avoided annually (at 0.68 kg CO2/kWh for the Philippine grid)</p>
+          <p class="metric-card__value">~4.4 tonnes CO2 avoided annually at 0.68 kg CO2/kWh</p>
           <p class="metric-card__detail">From the annual projection section</p>
         </article>
       </section>
@@ -75,13 +75,13 @@
             <dt>PV Array</dt>
             <dd>6.5 kWp</dd>
             <dt>Battery</dt>
-            <dd>14.3 kWh nominal, ~14.3 kWh usable (SOC range 21%-89% typical)</dd>
+            <dd>14.3 kWh nominal, ~14.4 kWh estimated usable in the data; treat that as effectively full nominal capacity rather than true &gt;100% usable because the estimate is sensitive to SOC reporting</dd>
             <dt>Inverter</dt>
-            <dd>8 kW AC (DC/AC ratio: 0.81 - inverter is oversized for this array)</dd>
+            <dd>8.0 kW AC (DC/AC ratio: 0.81)</dd>
             <dt>EV Usage</dt>
-            <dd>Present - detected on 19 of 89 days (~21% of days)</dd>
+            <dd>PHEV present; 30 EV-like charging days detected in 120 full days</dd>
             <dt>Tariff</dt>
-            <dd>Flat rate PHP 14/kWh import, PHP 7/kWh feed-in (net metering at 50%)</dd>
+            <dd>Flat rate at PHP 14/kWh</dd>
             <dt>Location</dt>
             <dd>Cavite, Philippines</dd>
           </dl>
@@ -90,9 +90,9 @@
         <article class="card accent-card">
           <div class="section-heading">
             <p class="section-label">Top Recommendation</p>
-            <h2>1. Shift EV charging to 10:00-13:00 (highest impact)</h2>
+            <h2>1. Shift PHEV charging into the late-morning solar window</h2>
           </div>
-          <p>On the 19 detected EV charging days, grid import averaged 17.5 kWh - nearly triple the 5.9 kWh on non-EV days. The bulk of that deficit occurs in the afternoon: at 15:00 on EV days, average load surges to 4,695W while PV has already begun its decline to ~1,679W; at 16:00 it&#x27;s a 3,808W load against only 834W of PV, forcing 1,847W of grid draw; by 18:00 the grid is pulling 2,293W. The battery is depleted to just 27% SOC by evening on EV days, compared to 67% on non-EV days - there is nothing left to cover the overnight household load, which then comes entirely from the grid.</p>
+          <p>What is happening now: your solar output is strongest from 09:00 to 14:00, with the average peak around 12:00. On EV/PHEV days, the charging signature extends from 09:00 through 20:00, and the heaviest average EV-day load appears at 15:00 when household demand reaches ~4.3 kW. That timing forces the battery to discharge hard and still leaves the grid supplying about 0.8 kWh in that hour on average. The single highest grid-draw hour in the whole dataset was 8.7 kW on 2025-12-02 at 16:00, and it was an EV day.</p>
         </article>
       </section>
 
@@ -101,7 +101,7 @@
           <p class="section-label">Monthly Snapshot</p>
           <h2>Financial impact from the current report</h2>
         </div>
-        <div class="table-scroll"><table><thead><tr><th>Month</th><th>Without Solar</th><th>With Solar</th><th>Feed-in Credit</th><th>Net Savings</th></tr></thead><tbody><tr><td>Jan 2026</td><td>PHP 11,628</td><td>PHP 4,654</td><td>PHP 76</td><td>PHP 7,051</td></tr><tr><td>Feb 2026</td><td>PHP 10,763</td><td>PHP 2,912</td><td>PHP 624</td><td>PHP 8,474</td></tr><tr><td>Mar 2026</td><td>PHP 12,341</td><td>PHP 2,899</td><td>PHP 874</td><td>PHP 10,317</td></tr></tbody></table></div>
+        <div class="table-scroll"><table><thead><tr><th>Month</th><th>Without Solar</th><th>With Solar</th><th>Feed-in Credit</th><th>Net Savings</th></tr></thead><tbody><tr><td>2025-12</td><td>PHP 13,042</td><td>PHP 5,959</td><td>PHP 0</td><td>PHP 7,084</td></tr><tr><td>2026-01</td><td>PHP 11,628</td><td>PHP 4,654</td><td>PHP 76</td><td>PHP 7,051</td></tr><tr><td>2026-02</td><td>PHP 10,763</td><td>PHP 2,912</td><td>PHP 624</td><td>PHP 8,474</td></tr><tr><td>2026-03</td><td>PHP 12,341</td><td>PHP 2,899</td><td>PHP 874</td><td>PHP 10,317</td></tr></tbody></table></div>
       </section>
 
       <section class="two-up">
@@ -111,7 +111,7 @@
             <h2>Current battery indicators</h2>
           </div>
           <ul class="clean-list">
-            <li><strong>Nominal capacity</strong>: 14.3 kWh | <strong>Estimated usable</strong>: ~14.3 kWh (100% of nominal - consistent with a new LFP battery)</li><li><strong>Round-trip efficiency</strong>: 96.7% (Jan) -&gt; 96.3% (Feb) -&gt; 94.5% (Mar)</li><li><strong>Daily equivalent full cycles</strong>: ~0.64 (234/year)</li><li><strong>Estimated cycle life remaining</strong>: ~25 years at current usage (6,000-cycle LFP rating ÷ 234 cycles/year)</li>
+            <li>Nominal capacity: 14.3 kWh</li><li>Estimated usable capacity from the data: ~14.4 kWh (101% of nominal)</li><li>Round-trip efficiency: 94.5% to 98.3% across the four months</li><li>Daily equivalent full cycles: ~0.61</li>
           </ul>
         </article>
 
@@ -120,7 +120,7 @@
             <p class="section-label">Alerts</p>
             <h2>Anomalies called out by the report</h2>
           </div>
-          <div class="table-scroll"><table><thead><tr><th>Type</th><th>Date</th><th>Observation</th><th>Likely Cause</th></tr></thead><tbody><tr><td>Load Anomalies</td><td>Jan 7</td><td>Daily load 36.0 with deviation +2.2sigma</td><td>Large late-night appliance or unusual household load</td></tr><tr><td>Load Anomalies</td><td>Jan 16</td><td>8.2 kW grid draw at 22:00 on a non-EV day</td><td>Large late-night appliance or unusual household load</td></tr><tr><td>Load Anomalies</td><td>Mar 1</td><td>Daily load 35.2 with deviation +2.1sigma</td><td>Large late-night appliance or unusual household load</td></tr><tr><td>Load Anomalies</td><td>Mar 13</td><td>Daily load 36.1 with deviation +2.2sigma</td><td>Large late-night appliance or unusual household load</td></tr><tr><td>PV Generation</td><td>Feb 8</td><td>Daily PV 10.9 with deviation −44%</td><td>Likely heavy cloud cover</td></tr><tr><td>PV Generation</td><td>Mar 17</td><td>Daily PV 15.8 with deviation −44%</td><td>Likely heavy cloud cover</td></tr></tbody></table></div>
+          <div class="table-scroll"><table><thead><tr><th>Type</th><th>Date</th><th>Observation</th><th>Likely Cause</th></tr></thead><tbody><tr><td>PV Generation Alerts</td><td>2025-12-07</td><td>Daily PV 9.9 with deviation -43%</td><td>Likely heavy cloud cover</td></tr><tr><td>PV Generation Alerts</td><td>2025-12-08</td><td>Daily PV 9.6 with deviation -41%</td><td>Likely heavy cloud cover</td></tr><tr><td>PV Generation Alerts</td><td>2025-12-09</td><td>Daily PV 8.6 with deviation -45%</td><td>Likely heavy cloud cover</td></tr><tr><td>PV Generation Alerts</td><td>2026-02-08</td><td>Daily PV 10.9 with deviation -44%</td><td>Likely heavy cloud cover</td></tr><tr><td>PV Generation Alerts</td><td>2026-03-17</td><td>Daily PV 15.8 with deviation -44%</td><td>Likely heavy cloud cover</td></tr></tbody></table></div>
         </article>
       </section>
     </main>
