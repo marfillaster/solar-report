@@ -15,6 +15,16 @@ INDEX_PATH = REPO_ROOT / "index.html"
 FULL_REPORT_PATH = REPO_ROOT / "full-report.html"
 RAW_REPORT_PATH = REPO_ROOT / "solar-analysis.md"
 
+GA_MEASUREMENT_ID = "G-S37EV14XH2"
+GA_SNIPPET = f"""<!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){{dataLayer.push(arguments);}}
+      gtag('js', new Date());
+      gtag('config', '{GA_MEASUREMENT_ID}');
+    </script>"""
+
 REQUIRED_SECTIONS = [
     "Executive Summary",
     "System Profile",
@@ -185,13 +195,21 @@ def parse_annual_bill_reduction(section_text: str) -> str:
     return parse_labeled_value(section_text, "Annual bill reduction")
 
 
-def parse_projected_generation(section_text: str) -> str:
-    return parse_labeled_value(section_text, "Projected annual generation").split("->")[0].strip()
+def parse_projected_generation(section_text: str) -> tuple[str, str]:
+    raw = parse_labeled_value(section_text, "Projected annual generation").split("->")[0].strip()
+    headline_match = re.match(r"(~?[\d,\.]+\s*kWh)\s*(\(year\s*1\))?", raw)
+    headline = headline_match.group(1) if headline_match else raw
+    remainder = raw[headline_match.end():] if headline_match else ""
+    detail = remainder.lstrip(" ,;").rstrip(".").strip() or "Year 1 estimate from the annual projection"
+    return headline, detail
 
 
-def parse_environmental_impact(section_text: str) -> str:
-    value = parse_labeled_value(section_text, "Environmental impact")
-    return value.split(", equivalent")[0].strip()
+def parse_environmental_impact(section_text: str) -> tuple[str, str]:
+    value = parse_labeled_value(section_text, "Environmental impact").split(", equivalent")[0].strip()
+    paren_match = re.match(r"(.*?)\s*\((.*)\)\s*$", value)
+    if paren_match:
+        return paren_match.group(1).strip(), paren_match.group(2).strip()
+    return value, "From the annual projection section"
 
 
 def parse_labeled_value(section_text: str, label: str) -> str:
@@ -404,8 +422,8 @@ def build_summary_page(sections: dict[str, str], period_long: str, period_short:
     summary = first_paragraph(sections["Executive Summary"])
     payback = parse_payback(sections["ROI Estimate"])
     annual_reduction = parse_annual_bill_reduction(sections["Bill Impact"])
-    generation = parse_projected_generation(sections["Annual Projection"])
-    carbon = parse_environmental_impact(sections["Annual Projection"])
+    generation, generation_detail = parse_projected_generation(sections["Annual Projection"])
+    carbon, carbon_detail = parse_environmental_impact(sections["Annual Projection"])
     recommendation_title, recommendation_body = first_recommendation(sections["Recommendations"])
     bill_table = first_table(sections["Bill Impact"])
     health_bullets = battery_health_bullets(sections["Battery Health"])
@@ -437,6 +455,7 @@ def build_summary_page(sections: dict[str, str], period_long: str, period_short:
       content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for {period_long}."
     />
     <link rel="stylesheet" href="./styles.css" />
+    {GA_SNIPPET}
   </head>
   <body>
     <header class="hero">
@@ -484,12 +503,12 @@ def build_summary_page(sections: dict[str, str], period_long: str, period_short:
         <article class="metric-card">
           <p class="metric-card__label">Projected Annual Generation</p>
           <p class="metric-card__value">{format_inline(generation)}</p>
-          <p class="metric-card__detail">Year 1 estimate from the annual projection</p>
+          <p class="metric-card__detail">{format_inline(generation_detail)}</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Carbon Avoided</p>
-          <p class="metric-card__value">{format_inline(carbon.split(',')[0])}</p>
-          <p class="metric-card__detail">From the annual projection section</p>
+          <p class="metric-card__value">{format_inline(carbon)}</p>
+          <p class="metric-card__detail">{format_inline(carbon_detail)}</p>
         </article>
       </section>
 
@@ -570,6 +589,7 @@ def build_full_report_page(markdown: str, period_long: str, period_short: str) -
       content="Full residential solar performance report covering {period_long}."
     />
     <link rel="stylesheet" href="./styles.css" />
+    {GA_SNIPPET}
   </head>
   <body>
     <header class="hero hero--compact">

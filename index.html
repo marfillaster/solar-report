@@ -9,6 +9,14 @@
       content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for December 2025 to April 2026."
     />
     <link rel="stylesheet" href="./styles.css" />
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S37EV14XH2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-S37EV14XH2');
+    </script>
   </head>
   <body>
     <header class="hero">
@@ -55,13 +63,13 @@
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Projected Annual Generation</p>
-          <p class="metric-card__value">~7,663 kWh (year 1), ~7,289 kWh (year 10), ~6,761 kWh (year 25) - assumes 0.5%/year panel degradation.</p>
-          <p class="metric-card__detail">Year 1 estimate from the annual projection</p>
+          <p class="metric-card__value">~7,663 kWh</p>
+          <p class="metric-card__detail">~7,289 kWh (year 10), ~6,761 kWh (year 25) - assumes 0.5%/year panel degradation</p>
         </article>
         <article class="metric-card">
           <p class="metric-card__label">Carbon Avoided</p>
-          <p class="metric-card__value">~4.7 tonnes CO2 avoided annually (at 0.68 kg CO2/kWh Philippine grid factor)</p>
-          <p class="metric-card__detail">From the annual projection section</p>
+          <p class="metric-card__value">~4.7 tonnes CO2 avoided annually</p>
+          <p class="metric-card__detail">at 0.68 kg CO2/kWh Philippine grid factor</p>
         </article>
       </section>
 
