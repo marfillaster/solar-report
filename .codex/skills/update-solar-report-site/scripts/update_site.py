@@ -15,6 +15,9 @@ INDEX_PATH = REPO_ROOT / "index.html"
 FULL_REPORT_PATH = REPO_ROOT / "full-report.html"
 RAW_REPORT_PATH = REPO_ROOT / "solar-analysis.md"
 
+SITE_URL = "https://marfillaster.github.io/solar-report"
+SITE_AUTHOR = "Ken Marfilla"
+
 GA_MEASUREMENT_ID = "G-S37EV14XH2"
 GA_SNIPPET = f"""<!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id={GA_MEASUREMENT_ID}"></script>
@@ -24,6 +27,39 @@ GA_SNIPPET = f"""<!-- Google tag (gtag.js) -->
       gtag('js', new Date());
       gtag('config', '{GA_MEASUREMENT_ID}');
     </script>"""
+
+
+def seo_head(page_path: str, title: str, description: str) -> str:
+    canonical = f"{SITE_URL}/{page_path}" if page_path else f"{SITE_URL}/"
+    image_url = f"{SITE_URL}/og-image.png"
+    json_ld = (
+        '{"@context":"https://schema.org","@type":"Article",'
+        f'"headline":"{html.escape(title, quote=True)}",'
+        f'"description":"{html.escape(description, quote=True)}",'
+        f'"url":"{canonical}",'
+        f'"image":"{image_url}",'
+        f'"author":{{"@type":"Person","name":"{SITE_AUTHOR}"}},'
+        f'"publisher":{{"@type":"Person","name":"{SITE_AUTHOR}"}},'
+        '"inLanguage":"en"}'
+    )
+    return f"""<title>{html.escape(title)}</title>
+    <meta name="description" content="{html.escape(description, quote=True)}" />
+    <meta name="author" content="{SITE_AUTHOR}" />
+    <meta name="robots" content="index,follow" />
+    <link rel="canonical" href="{canonical}" />
+    <meta property="og:type" content="article" />
+    <meta property="og:site_name" content="Solar Performance Report" />
+    <meta property="og:title" content="{html.escape(title, quote=True)}" />
+    <meta property="og:description" content="{html.escape(description, quote=True)}" />
+    <meta property="og:url" content="{canonical}" />
+    <meta property="og:image" content="{image_url}" />
+    <meta property="og:locale" content="en_PH" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="{html.escape(title, quote=True)}" />
+    <meta name="twitter:description" content="{html.escape(description, quote=True)}" />
+    <meta name="twitter:image" content="{image_url}" />
+    <script type="application/ld+json">{json_ld}</script>"""
+
 
 REQUIRED_SECTIONS = [
     "Executive Summary",
@@ -449,11 +485,7 @@ def build_summary_page(sections: dict[str, str], period_long: str, period_short:
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Solar System Report | {period_short}</title>
-    <meta
-      name="description"
-      content="A shareable solar performance report covering generation, self-sufficiency, bill savings, ROI, and battery behavior for {period_long}."
-    />
+    {seo_head("", f"Residential 6.5 kWp Solar Performance Report — Philippines ({period_short})", f"Real residential solar performance from {period_long}: kWh generation, self-sufficiency, bill savings, ROI payback, and battery behavior for a 6.5 kWp system in Cavite, Philippines.")}
     <link rel="stylesheet" href="./styles.css" />
     {GA_SNIPPET}
   </head>
@@ -583,11 +615,7 @@ def build_full_report_page(markdown: str, period_long: str, period_short: str) -
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Full Solar Report | {period_short}</title>
-    <meta
-      name="description"
-      content="Full residential solar performance report covering {period_long}."
-    />
+    {seo_head("full-report.html", f"Full Residential Solar Performance Report — Philippines ({period_short})", f"Detailed monthly solar generation, self-sufficiency, ROI, battery health, and grid feed-in figures for a 6.5 kWp residential system in Cavite, Philippines, covering {period_long}.")}
     <link rel="stylesheet" href="./styles.css" />
     {GA_SNIPPET}
   </head>
