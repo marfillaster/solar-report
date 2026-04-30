@@ -9,7 +9,7 @@ import re
 from pathlib import Path
 
 
-DEFAULT_SOURCE = Path("/Users/ken/solar-skills/data/solar-analysis.md")
+DEFAULT_SOURCE = Path.home() / "solar-skills" / "data" / "solar-analysis.md"
 REPO_ROOT = Path(__file__).resolve().parents[4]
 INDEX_PATH = REPO_ROOT / "index.html"
 FULL_REPORT_PATH = REPO_ROOT / "full-report.html"
